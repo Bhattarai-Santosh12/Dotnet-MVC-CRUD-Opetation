@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<TicketSystem.Models.ViewModels.CustomerViewModel>
+
+<h1>List of Customer</h1>
+
+<table class="table">
+    <thead>
+        <th>id</th>
+        <th>Id</th>
+        <th>Title</th>
+      <th>Description</th>
+      <th>Created By</th>
+        <th>Status</th>
+
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+           
+            {
+                <tr>
+                    @* <td>@customer.id</td> *@
+                    <td>@customer.Id</td>
+                    <td>@customer.Title</td>
+                    <td>@customer.Description</td>
+                    <td>@customer.CraetedBy</td>
+                    <td>@customer.Status</td> 
+                    <td>
+                  
+           
+            
+                    <a asp-controller="CustomerController1" asp-action="Edit" asp-route-id="@customer.id" type="submit" class="btn btn-primary">Edit</a>
+                  @*   <a  asp-action="Delete" asp-route-id="@customer.Id" class="btn btn-danger" >  Delete</a> *@
+
+                </td>
+                
+            </tr>
+           
+        }
+    </tbody>
+</table>
+
+@* @if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+        };
+    </script>
+} *@
+
+
+@if (TempData["Message"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@TempData["Message"]");
+        };
+    </script>
+}
